@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chill Travel Planner</title>
+
+  <!-- jQuery & jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+  <!-- Internal CSS for that modern chill vibe -->
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fffde7);
+      color: #333;
+      padding: 40px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 30px;
+      color: #2e7d32;
+    }
+
+    #tabs {
+      width: 90%;
+      max-width: 850px;
+      margin: 0 auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    .ui-tabs .ui-tabs-nav {
+      background: #fafafa;
+      border: none;
+    }
+
+    .ui-tabs .ui-tabs-nav li {
+      border: none;
+      border-right: 1px solid #eee;
+      background-color: #f5f5f5;
+    }
+
+    .ui-tabs .ui-tabs-nav li a {
+      font-size: 16px;
+      padding: 14px 18px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #333;
+    }
+
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+      background-color: #ffffff;
+      border-bottom: 3px solid #4caf50;
+    }
+
+    .ui-tabs-panel {
+      padding: 30px;
+      background-color: #ffffff;
+    }
+
+    label {
+      font-weight: 500;
+      margin-top: 15px;
+      display: block;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #4caf50;
+      outline: none;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .icon {
+      width: 20px;
+    }
+  </style>
+
+  <!-- Tabs & Datepicker Init -->
+  <script>
+    $(function () {
+      $("#tabs").tabs();
+      $(".datepicker").datepicker();
+    });
+  </script>
+</head>
+<body>
+
+  <h1>🌴 Chill Travel Planner</h1>
+
+  <div id="tabs">
+    <ul>
+      <li><a href="#flights"><img src="flight-icon.svg" class="icon" alt="">Flights</a></li>
+      <li><a href="#hotels"><img src="hotel-icon.svg" class="icon" alt="">Hotels</a></li>
+      <li><a href="#cars"><img src="car-icon.svg" class="icon" alt="">Cars</a></li>
+      <li><a href="#cruises"><img src="cruise-icon.svg" class="icon" alt="">Cruises</a></li>
+      <li><a href="#activities"><img src="ticket-icon.svg" class="icon" alt="">Things to Do</a></li>
+    </ul>
+
+    <!-- Flights Tab -->
+    <div id="flights">
+      <label for="from">From</label>
+      <input type="text" id="from" placeholder="e.g., Los Angeles">
+
+      <label for="to">To</label>
+      <input type="text" id="to" placeholder="e.g., Tokyo">
+
+      <label for="depart-date">Departure</label>
+      <input type="text" class="datepicker" id="depart-date">
+
+      <label for="return-date">Return</label>
+      <input type="text" class="datepicker" id="return-date">
+
+      <button>Find Flights ✈️</button>
+    </div>
+
+    <!-- Hotels Tab -->
+    <div id="hotels">
+      <label for="destination">Destination</label>
+      <input type="text" id="destination" placeholder="e.g., Paris">
+
+      <label for="check-in">Check-in</label>
+      <input type="text" class="datepicker" id="check-in">
+
+      <label for="check-out">Check-out</label>
+      <input type="text" class="datepicker" id="check-out">
+
+      <label for="guests">Guests</label>
+      <select id="guests">
+        <option>1 Guest</option>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4+ Guests</option>
+      </select>
+
+      <button>Search Hotels 🏨</button>
+    </div>
+
+    <!-- Cars Tab -->
+    <div id="cars">
+      <label for="pickup-location">Pickup Location</label>
+      <input type="text" id="pickup-location" placeholder="e.g., Airport Terminal 1">
+
+      <label for="pickup-date">Pickup Date</label>
+      <input type="text" class="datepicker" id="pickup-date">
+
+      <label for="return-car-date">Return Date</label>
+      <input type="text" class="datepicker" id="return-car-date">
+
+      <button>Get a Ride 🚗</button>
+    </div>
+
+    <!-- Cruises Tab -->
+    <div id="cruises">
+      <label for="departure-port">Departure Port</label>
+      <input type="text" id="departure-port" placeholder="e.g., Miami">
+
+      <label for="cruise-date">Cruise Date</label>
+      <input type="text" class="datepicker" id="cruise-date">
+
+      <label for="cruise-length">Length</label>
+      <select id="cruise-length">
+        <option>3–5 Days</option>
+        <option>6–9 Days</option>
+        <option>10+ Days</option>
+      </select>
+
+      <button>Explore Cruises 🚢</button>
+    </div>
+
+    <!-- Activities Tab -->
+    <div id="activities">
+      <label for="activity-location">Where to?</label>
+      <input type="text" id="activity-location" placeholder="e.g., Rome">
+
+      <label for="activity-date">Date</label>
+      <input type="text" class="datepicker" id="activity-date">
+
+      <label for="category">Type of Activity</label>
+      <select id="category">
+        <option>Sightseeing</option>
+        <option>Outdoor</option>
+        <option>Museum</option>
+        <option>Restaurant</option>
+      </select>
+
+      <button>Book Fun 🎟️</button>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
